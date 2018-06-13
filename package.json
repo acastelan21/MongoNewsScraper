@@ -1,0 +1,19 @@
+{
+  "name": "mongonewsscraper",
+  "version": "1.0.0",
+  "description": "news scraper with mongo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acastelan21/MongoNewsScraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acastelan21/MongoNewsScraper/issues"
+  },
+  "homepage": "https://github.com/acastelan21/MongoNewsScraper#readme"
+}
