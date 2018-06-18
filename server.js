@@ -4,11 +4,10 @@ var app = express();
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-//require scraping tools
-var axios = require("axios");
-var cheerio = require("cheerio"); 
+
+
 //require models for database 
-//var db = require("./models");
+var db = require("./models");
 
 //require handlebars 
 var exphbs = require("express-handlebars");
@@ -28,7 +27,7 @@ app.use(express.static("public"));
 
 //require routes 
 require("./routes/html-routes.js")(app);
-// require("./routes/api-routes.js")(app); 
+require("./routes/api-routes.js")(app); 
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
