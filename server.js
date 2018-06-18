@@ -36,7 +36,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
-var PORT = 3010;
-app.listen(process.env.PORT || 3010, function() {
+var PORT = process.env.PORT ||3000;
+app.listen(process.env.PORT || 3000, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
