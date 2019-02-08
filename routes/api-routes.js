@@ -19,7 +19,7 @@ module.exports = function (app) {
                 var title = $(element).text();
 
                 // Find the h4 tag's parent a-tag, and save it's href value as "link"
-                var link = $(element).parent().attr("href");
+                var link = "https://www.nhl.com/" +  $(element).parent().attr("href");
 
                 // Make an object with data we scraped for this h4 and push it to the results array
                 results.push({
@@ -43,19 +43,7 @@ module.exports = function (app) {
         res.send("scrape complete")
     }); //scrape
 
-    app.get("/articles", function (req, res) {
-        // Grab every document in the Articles collection
-        db.Article.find({})
-            .then(function (dbArticle) {
-                // If we were able to successfully find Articles, send them back to the client
-                res.json(dbArticle);
-            })
-            .catch(function (err) {
-                // If an error occurred, send it to the client
-                res.json(err);
-            });
-    });
-
+  
 
     // Route for grabbing a specific Article by id, populate it with it's note
     app.get("/articles/:id", function (req, res) {
@@ -100,5 +88,37 @@ module.exports = function (app) {
                 res.json(err);
             });
     });
+//     // Update just one note by an id
+app.post("/update/:id", function(req, res) {
+    // When searching by an id, the id needs to be passed in
+    // as (mongojs.ObjectId(IdYouWantToFind))
+  
+    // Update the note that matches the object id
+    db.Articles.update(
+      {
+        _id: mongojs.ObjectId(req.params.id)
+      },
+      {
+        // Set the title, note and modified parameters
+        // sent in the req body.
+        $set: {
+          saved:true
+        }
+      },
+      function(error, edited) {
+        // Log any errors from mongojs
+        if (error) {
+          console.log(error);
+          res.send(error);
+        }
+        else {
+          // Otherwise, send the mongojs response to the browser
+          // This will fire off the success function of the ajax request
+          console.log(edited);
+          res.send(edited);
+        }
+      }
+    );
+  });
 
-} //exports
+}//exports

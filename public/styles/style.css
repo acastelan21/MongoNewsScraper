@@ -34,4 +34,17 @@ body { background-color: #F2F6D0 }
         margin: auto;
         margin-top: 20;
     }
-   
+   .jumbotron {
+    width:100%;
+    height:450px;
+    background-image: url("/images/Puck.jpeg");
+    background-size: cover;
+    text-align: center;
+    
+   }
+
+   .display-4 {
+    margin-top:75px;
+    font-size: 4.5rem !important;
+    font-weight: 400 !important;
+   }
